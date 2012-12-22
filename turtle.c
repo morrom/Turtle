@@ -27,3 +27,14 @@ int matrix[50][50][1];
 _turtle turtle;
 //---------------------------------------
 
+int main()
+{
+    //inizializzazione floor a 0
+    int i,j;
+    for( i = 0; i<50; i++)
+        for( j = 0; j<50; j++)
+            matrix[i][j][0] = 0; // tutti i punti non sono disegnati
+
+    //inizializzazione tartaruga
+    turtle.position=np(0,0);
+    turtle.pencildown=0;  // matita alzata
