@@ -1,5 +1,5 @@
 Turtle - Esercizio 6.26 - C, Corso Completo di Programmazione, Deitel
-=====================================================================
+======---------------------------------------------------------------
 
 Immaginate una tartaruga meccanica che girovaga in una stanza.
 La tartaruga ha una penna in una delle due posizioni, alzata o abbassata.
