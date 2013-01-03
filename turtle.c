@@ -55,3 +55,98 @@ _point np(int x,int y)
     return aPoint;
 }
 
+void drawPoint (_point thePoint)
+{
+    matrix[thePoint.x][thePoint.y][0] = 1;
+}
+
+void executeCommand (int cmd, int opt)
+{
+    /*
+     1 = alza la penna
+     2 = abbassa la penna
+     3 = gira a destra di "n" caselle (in questo caso viene considerato il parametro "opt")
+     4 = gira a sinistra di "n" caselle (in questo caso viene considerato il parametro "opt")
+     5, n = vai su di "n" caselle (in questo caso viene considerato il parametro "opt")
+     6, n = vai giù di "n" caselle (in questo caso viene considerato il parametro "opt")
+     7 = visualizza la matrice 50x50
+     */
+
+    switch (cmd)
+    {
+        case 1:
+            turtle.pencildown = 0;
+            break;
+
+        case 2:
+            turtle.pencildown = 1; //inizia a disegnare
+            break;
+
+        case 3: {
+            while (opt--)
+            {
+                turtle.position = np(turtle.position.x+1, turtle.position.y);
+                if (turtle.pencildown)
+                    drawPoint(turtle.position);
+            }
+        }
+            break;
+
+        case 4: {
+            while (opt--)
+            {
+                turtle.position = np(turtle.position.x-1, turtle.position.y);
+                if (turtle.pencildown)
+                    drawPoint(turtle.position);
+            }
+        }
+            break;
+
+        case 5: {
+            while (opt--)
+            {
+                turtle.position = np(turtle.position.x, turtle.position.y-1);
+                if (turtle.pencildown)
+                    drawPoint(turtle.position);
+            }
+        }
+            break;
+
+        case 6: {
+            while (opt--)
+            {
+                turtle.position = np(turtle.position.x, turtle.position.y+1);
+                if (turtle.pencildown)
+                    drawPoint(turtle.position);
+            }
+        }
+            break;
+
+        case 7:
+            printFloor();
+            break;
+
+        default:
+            printf("Comando non riconosciuto.\n");
+            break;
+    }
+}
+
+void printFloor ()
+{
+    printf("*** Percorso Tartaruga ***\n");
+
+int y;
+    for ( y = 0; y<50; y++)
+    {
+        printf("\n");
+        int x;
+        for (x = 0; x<50; x++)
+        {
+            if (matrix[x][y][0] == 0)
+                printf(" ");
+            else
+                printf("*");
+        }
+    }
+}
