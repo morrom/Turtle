@@ -23,7 +23,7 @@ void printFloor ();
 // variabili globali
 //---------------------------------------
 //matrice 50x50
-int matrix[50][50][1];
+int matrix[50][50];
 _turtle turtle;
 //---------------------------------------
 
@@ -33,7 +33,7 @@ int main()
     int i,j;
     for( i = 0; i<50; i++)
         for( j = 0; j<50; j++)
-            matrix[i][j][0] = 0; // tutti i punti non sono disegnati
+            matrix[i][j] = 0; // tutti i punti non sono disegnati
 
     //inizializzazione tartaruga
     turtle.position=np(0,0);
@@ -57,7 +57,7 @@ _point np(int x,int y)
 
 void drawPoint (_point thePoint)
 {
-    matrix[thePoint.x][thePoint.y][0] = 1;
+    matrix[thePoint.x][thePoint.y] = 1;
 }
 
 void executeCommand (int cmd, int opt)
@@ -143,7 +143,7 @@ int y;
         int x;
         for (x = 0; x<50; x++)
         {
-            if (matrix[x][y][0] == 0)
+            if (matrix[x][y] == 0)
                 printf(" ");
             else
                 printf("*");
